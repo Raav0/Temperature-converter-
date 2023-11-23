@@ -1,0 +1,33 @@
+def celsius_to_fahrenheit(celsius):
+    return (celsius * 9/5) + 32
+
+def fahrenheit_to_celsius(fahrenheit):
+    return (fahrenheit - 32) * 5/9
+
+def temperature_converter():
+    print("Welcome to the Temperature Converter!")
+    
+    try:
+        value = float(input("Enter the temperature value: "))
+    except ValueError:
+        print("Invalid input. Please enter a numeric value.")
+        return
+    
+    source_unit = input("Enter the source unit (C for Celsius, F for Fahrenheit): ").upper()
+    target_unit = input("Enter the target unit (C for Celsius, F for Fahrenheit): ").upper()
+    
+    if source_unit == target_unit:
+        print("Source and target units are the same. No conversion needed.")
+        return
+    
+    if source_unit == 'C' and target_unit == 'F':
+        result = celsius_to_fahrenheit(value)
+        print(f"{value} Celsius is equal to {result:.2f} Fahrenheit.")
+    elif source_unit == 'F' and target_unit == 'C':
+        result = fahrenheit_to_celsius(value)
+        print(f"{value} Fahrenheit is equal to {result:.2f} Celsius.")
+    else:
+        print("Unsupported units. Please choose either Celsius (C) or Fahrenheit (F).")
+
+# Run the temperature converter
+temperature_converter()
